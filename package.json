@@ -1,0 +1,16 @@
+{
+    "name": "react-brazilian-documents",
+    "version": "0.0.1",
+    "description": "React components for input brazilian documents with masks",
+    "main": "index.js",
+    "scripts": {
+        "test": ""
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/react": "^18.2.48",
+        "react": "^18.2.0",
+        "typescript": "^5.3.3"
+    }
+}
