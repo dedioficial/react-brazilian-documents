@@ -28,6 +28,8 @@ export interface CpfValues {
 
 export interface CpfInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> {
+  name?: string;
+
   /**
    * Default is `input`, that renders a `<input />` element.
    *
@@ -36,20 +38,6 @@ export interface CpfInputProps
    * Component type to be rendered. Must be a component that uses `input` element.
    */
   as?: React.ElementType;
-
-  /**
-   * `mode: 1`
-   * Default. The component will render two inputs: a dummy one for the mask, and the real value input hidden.
-   * This is so the value to be sended by the form will always be the cleaned value of CPF, without mask.
-   * The dummy input will have no `name` prop, and will not be sended with the form.
-   * If the property `hookForm` is passed, the real input will not be rendered, instead the component will use `setValue('cpf', cleanCPF)`
-   * to set the value in the form state.
-   *
-   * `mode: 2`
-   *
-   * The component will render only the mask input, and this will receive the `name` prop. This way the value will be sended formatted
-   * with the mask, and should be treated externally. */
-  mode?: 1 | 2;
 
   /**
    * If `react-hook-form` is used, this prop should receive the methods: `register`, and `setValue`.
@@ -75,15 +63,31 @@ export interface CpfInputProps
   hookForm?: GenericConfigurationReactHookForm;
 
   /**
+   * `mode: 1`
+   * Default. The component will render two inputs: a dummy one for the mask, and the real value input hidden.
+   * This is so the value to be sended by the form will always be the cleaned value of CPF, without mask.
+   * The dummy input will have no `name` prop, and will not be sended with the form.
+   * If the property `hookForm` is passed, the real input will not be rendered, instead the component will use `setValue('cpf', cleanCPF)`
+   * to set the value in the form state.
+   *
+   * `mode: 2`
+   *
+   * The component will render only the mask input, and this will receive the `name` prop. This way the value will be sended formatted
+   * with the mask, and should be treated externally. */
+  mode?: 1 | 2;
+
+  /**
+   *
+   * The onChange event will send a `CpfValues` object, that has a `value: string` with the real value of CPF typed (without mask, only numbers), and `mask: string` with the masked value.
+   */
+  onChange?: (cpf: CpfValues) => void;
+
+  /**
    * Default `true`
    *
-   * If `hookForm` prop is passed, this option will add a `validate` method into `register` action that will, well, validate the
-   * CPF inputed using CPF algorythm created by Receita Federal do Brasil. If not valid, the `react-hook-form` will not submit the form and trigger an error
-   * into the `useForm -> formState: { errors }`.
+   * If `hookForm` prop is passed, this option will add a validate method into register action that will validate the CPF inputed using CPF algorythm created by Receita Federal do Brasil. If not valid, the `react-hook-form` will trigger an error into the `(useForm()).formState: { errors }`.
    */
   validate?: boolean;
-  onChange?: (cpf: CpfValues) => void;
-  name: string;
 }
 
 export interface CpfInputRef {

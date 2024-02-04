@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { cleanCpfCnpj, cpfMask } from "../masks";
-import { patterns, validateCpf } from "../validation";
+import { cleanCpfCnpj, cpfMask } from "../../utils/masks";
+import { maskPatterns, validateCpf } from "../../utils/validation";
 import { CpfInputProps, CpfInputRef, CpfInputTarget, CpfValues } from "./types";
 
 const CpfInput = React.forwardRef(
@@ -117,7 +117,7 @@ const CpfInput = React.forwardRef(
           }}
           name={mode === 2 && !hookForm ? name : undefined}
           {...registerMask}
-          pattern={patterns.CPF.source}
+          pattern={maskPatterns.CPF.source}
           ref={
             !ref
               ? maskRef

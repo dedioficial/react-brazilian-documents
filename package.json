@@ -1,16 +1,43 @@
 {
     "name": "react-brazilian-documents",
-    "version": "0.0.1",
+    "version": "0.2.0",
     "description": "React components for input brazilian documents with masks",
-    "main": "index.js",
-    "scripts": {
-        "test": ""
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.js",
+    "types": "dist/types.d.ts",
+    "keywords": [
+        "react",
+        "nextjs",
+        "cpf",
+        "cnpj",
+        "mask",
+        "mascara",
+        "documento",
+        "document",
+        "input",
+        "brasil",
+        "brazil"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dedioficial/react-brazilian-documents"
     },
-    "author": "",
-    "license": "ISC",
+    "scripts": {
+        "build": "rollup -c --bundleConfigAsCjs"
+    },
+    "author": "Matheus Andrade",
+    "license": "MIT",
     "devDependencies": {
+        "@rollup/plugin-commonjs": "^25.0.7",
+        "@rollup/plugin-node-resolve": "^15.2.3",
+        "@rollup/plugin-typescript": "^11.1.6",
         "@types/react": "^18.2.48",
         "react": "^18.2.0",
+        "rollup": "^4.9.6",
+        "rollup-plugin-dts": "^6.1.0",
+        "rollup-plugin-peer-deps-external": "^2.2.4",
+        "rollup-plugin-terser": "^7.0.2",
+        "tslib": "^2.6.2",
         "typescript": "^5.3.3"
     }
 }

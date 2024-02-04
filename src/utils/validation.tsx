@@ -1,4 +1,7 @@
-export const patterns = {
+/**
+ * Regex patterns for CPF and CNPJ mask inputs.
+ */
+export const maskPatterns = {
   CPF: new RegExp("^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}$"),
   CNPJ: new RegExp("^[0-9]{2}.[0-9]{3}.[0-9]{3}/[0-9]{4}-[0-9]{2}$"),
 };
@@ -32,6 +35,18 @@ function isCPFValid(cpf: string) {
   return verificationDigits === digitsCalculated;
 }
 
-export const validateCpf = (v: string) => {
-  return isCPFValid(v);
+/**
+ * A function to validate the CPF based on the CPF algorythm created by Receita Federal do Brasil.
+ *
+ * @examples
+ * ```JSX
+ * validateCpf('127.408.170-02') // Returns true
+ * validateCpf('12740817002') // Returns true
+ * validateCpf('111.111.111-11') // Returns false
+ * validateCpf('123.456.789-01') // Returns false
+ * ```
+ */
+
+export const validateCpf = (cpf: string) => {
+  return isCPFValid(cpf);
 };
