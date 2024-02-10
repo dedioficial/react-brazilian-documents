@@ -7,6 +7,7 @@ A library with inputs with masks to use in brazilian forms.
 | Name                                           | Description                                                     |
 | ---------------------------------------------- | --------------------------------------------------------------- |
 | [CpfInput](./CpfInput.md)                      | Handles CPF document.                                           |
+| [CnpjInput](./CnpjInput.md)                    | Handles CNPJ document.                                          |
 | [Utilities Functions](./UtilitiesFunctions.md) | Utilities functions to format, mask, and validate CPF and CNPJ. |
 
 ## Installation

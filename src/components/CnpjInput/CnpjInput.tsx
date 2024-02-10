@@ -1,17 +1,17 @@
 "use client";
 
 import * as React from "react";
-import { cleanCpfCnpj, cpfMask } from "../../utils/masks";
-import { maskPatterns, validateCpf } from "../../utils/validation";
+import { cleanCpfCnpj, cnpjMask } from "../../utils";
+import { maskPatterns, validateCnpj } from "../../utils/validation";
 import { MaskInputTarget, MaskProps, MaskRef, MaskValues } from "../types";
 
-const CpfInput = React.forwardRef(
+const CnpjInput = React.forwardRef(
   (
     {
       as: ElementTag = "input",
       mode = 1,
       defaultValue,
-      name = "cpf",
+      name = "cnpj",
       className,
       hookForm,
       validate = true,
@@ -22,7 +22,7 @@ const CpfInput = React.forwardRef(
   ) => {
     const maskRef = React.useRef<HTMLInputElement | null>(null);
     const valueRef = React.useRef<HTMLInputElement | null>(null);
-    const validationObj = validate ? { validate: validateCpf } : {};
+    const validationObj = validate ? { validate: validateCnpj } : {};
 
     React.useImperativeHandle(refForward, () => ({
       refs: {
@@ -55,8 +55,8 @@ const CpfInput = React.forwardRef(
     };
 
     const getValues = (value: string) => {
-      const realValue = cleanCpfCnpj(value, "cpf");
-      const maskValue = cpfMask(realValue);
+      const realValue = cleanCpfCnpj(value, "cnpj");
+      const maskValue = cnpjMask(realValue);
 
       return {
         value: realValue,
@@ -119,7 +119,7 @@ const CpfInput = React.forwardRef(
           }}
           name={mode === 2 && !hookForm ? name : undefined}
           {...registerMask}
-          pattern={maskPatterns.CPF.source}
+          pattern={maskPatterns.CNPJ.source}
           ref={
             !ref
               ? maskRef
@@ -146,6 +146,6 @@ const CpfInput = React.forwardRef(
   }
 );
 
-CpfInput.displayName = "CpfInput";
+CnpjInput.displayName = "CnpjInput";
 
-export default CpfInput;
+export default CnpjInput;
